@@ -2,10 +2,10 @@
 
 mvn jar:jar install:install help:evaluate -Dexpression=project.name
 
-NAME='mvn -q -DforceStdout help:evaluate -Dexpression=project.name'
+NAME=$(mvn -q -DforceStdout help:evaluate -Dexpression=project.name)
 echo "Name: $NAME"
 
-VERSION='mvn -q -DforceStdout help:evaluate -Dexpression=project.version'
+VERSION=$(mvn -q -DforceStdout help:evaluate -Dexpression=project.version)
 echo "Version: $VERSION"
 
 java -jar target/"$NAME"-"$VERSION".jar
