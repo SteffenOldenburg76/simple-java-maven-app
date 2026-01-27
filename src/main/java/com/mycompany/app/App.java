@@ -22,6 +22,7 @@ public class App {
         System.out.println("User password: " + password); 
 
         String cmd = System.getProperty("cmd");
+        int length = cmd.trim().length(); 
         System.out.println("Cmd: " + cmd.trim()); 
 
         Cipher cipher = Cipher.getInstance("DES"); 
