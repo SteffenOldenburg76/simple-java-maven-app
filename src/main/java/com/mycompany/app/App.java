@@ -19,6 +19,9 @@ public class App {
 
         String password = "gehtdichnixan";
         System.out.println("User password: " + password); 
+
+        String cmd = System.getProperty("cmd");
+        System.out.println("Cmd: " + cmd.trim()); 
     }
 
     public String getMessage() {
