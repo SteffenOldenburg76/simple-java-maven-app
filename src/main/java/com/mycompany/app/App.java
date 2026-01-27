@@ -5,11 +5,14 @@ import javax.crypto.Cipher;
 import java.sql.*;
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Hello world!
  */
 public class App {
-
+    private static final Logger logger = LoggerFactory.getLogger(App.class);
     private static final String MESSAGE = "Hello github World!";
 
     public App() {}
@@ -18,26 +21,26 @@ public class App {
         //should be detected as an insecure random - spotbugs can detect this
         Random rand = new Random();
         int randomInt = rand.nextInt(10);        
-        System.out.println(MESSAGE+": "+randomInt);
+        log.info(MESSAGE+": "+randomInt);
 
         //should trigger data leakage
         String password = "gehtdichnixan";
-        System.out.println("User password: " + password); 
+        log.info("User password: " + password); 
 
         //should trigger null pointer
         try {
             String cmd = System.getProperty("cmd");
             int length = cmd.trim().length(); 
-            System.out.println("Cmd: " + cmd.trim()); 
+            log.info("Cmd: " + cmd.trim()); 
         }
-        catch (Exception e) {}
+        catch (Exception e) {log.error("Some error: ", e)}
 
         //should trigger unsecure cipher
         Cipher cipher = Cipher.getInstance("DES"); 
 
         // should trigger a GitHub Personal Access Token alert
         String githubToken = "ghp_n0tArEaLtOkEnThAtTrIgGeRsScAnNeR1234";
-        System.out.println("Connecting with token: " + githubToken);        
+        log.info("Connecting with token: " + githubToken);        
     }
 
     public String getMessage() {
