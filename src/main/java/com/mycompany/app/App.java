@@ -16,6 +16,9 @@ public class App {
         int randomInt = rand.nextInt(10);        
         
         System.out.println(MESSAGE+": "+randomInt);
+
+        String password = "gehtdichnixan";
+        System.out.println("User password: " + password); 
     }
 
     public String getMessage() {
