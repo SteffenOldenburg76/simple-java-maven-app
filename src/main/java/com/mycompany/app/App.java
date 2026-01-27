@@ -20,14 +20,21 @@ public class App {
         
         System.out.println(MESSAGE+": "+randomInt);
 
+        //should trigger data leakage
         String password = "gehtdichnixan";
         System.out.println("User password: " + password); 
 
+        //should trigger null pointer
         String cmd = System.getProperty("cmd");
         int length = cmd.trim().length(); 
         System.out.println("Cmd: " + cmd.trim()); 
 
+        //should trigger unsecure cipher
         Cipher cipher = Cipher.getInstance("DES"); 
+
+        // should trigger a GitHub Personal Access Token alert
+        String githubToken = "ghp_n0tArEaLtOkEnThAtTrIgGeRsScAnNeR1234";
+        System.out.println("Connecting with token: " + githubToken);        
     }
 
     public String getMessage() {
