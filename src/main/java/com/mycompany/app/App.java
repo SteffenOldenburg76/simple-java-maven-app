@@ -15,9 +15,9 @@ public class App {
     public App() {}
 
     public static void main(String[] args) {
+        //should be detected as an insecure random - spotbugs can detect this
         Random rand = new Random();
         int randomInt = rand.nextInt(10);        
-        
         System.out.println(MESSAGE+": "+randomInt);
 
         //should trigger data leakage
@@ -25,9 +25,12 @@ public class App {
         System.out.println("User password: " + password); 
 
         //should trigger null pointer
-        String cmd = System.getProperty("cmd");
-        int length = cmd.trim().length(); 
-        System.out.println("Cmd: " + cmd.trim()); 
+        try {
+            String cmd = System.getProperty("cmd");
+            int length = cmd.trim().length(); 
+            System.out.println("Cmd: " + cmd.trim()); 
+        }
+        catch (Exception e) {}
 
         //should trigger unsecure cipher
         Cipher cipher = Cipher.getInstance("DES"); 
