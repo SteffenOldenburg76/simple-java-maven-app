@@ -1,6 +1,7 @@
 package com.mycompany.app;
 
 import java.util.Random;
+import javax.crypto.Cipher;
     
 /**
  * Hello world!
@@ -22,6 +23,8 @@ public class App {
 
         String cmd = System.getProperty("cmd");
         System.out.println("Cmd: " + cmd.trim()); 
+
+        Cipher cipher = Cipher.getInstance("DES"); 
     }
 
     public String getMessage() {
