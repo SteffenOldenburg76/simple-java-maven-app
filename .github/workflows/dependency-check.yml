@@ -18,6 +18,7 @@ jobs:
           args: >
             --failOnCVSS 7
             --enableRetired
+            --nvdApiKey ${{ secrets.NVD_API_KEY }}
 
       - name: Upload Report
         uses: actions/upload-artifact@v4
