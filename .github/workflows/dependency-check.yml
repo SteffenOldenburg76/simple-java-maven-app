@@ -19,6 +19,9 @@ jobs:
             --failOnCVSS 7
             --enableRetired
             --nvdApiKey ${{ secrets.NVD_API_KEY }}
+            --nvdApiDelay 16000
+            --nvdMaxRetryCount 10
+            --noupdate
 
       - name: Upload Report
         uses: actions/upload-artifact@v4
